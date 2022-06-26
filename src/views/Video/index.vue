@@ -1,6 +1,6 @@
 <template>
 <div>
-    <router-view></router-view>
+video
 </div>
 </template>
 
