@@ -5,12 +5,13 @@ const Home = () => import('@/views/Home/index.vue')
 const Video = () => import('@/views/Video/index.vue')
 const Question = () => import('@/views/Question/index.vue')
 const My = () => import('@/views/My/index.vue')
-const Login = () => import('@/views/Layout/index.vue')
+const Login = () => import('@/Logout/index.vue')
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    // redirect: '/home',
     component: Layout,
     children: [
       { path: 'home', component: Home },
@@ -21,7 +22,6 @@ const routes = [
   },
   { path: '/login', component: Login }
 ]
-
 const router = new VueRouter({
   routes
 })
