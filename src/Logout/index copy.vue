@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="登录" @click-left="$router.back()">>
+    <van-nav-bar title="登录" @click-left="$router.back()">
       <van-icon name="cross" slot="left" />
       <!-- <template v-slot:left>
         <van-icon name="cross" />
@@ -33,8 +33,8 @@
           { pattern: /^\d{6}$/, message: '验证码长度必须是6位' },
         ]"
       >
-        <i class="toutiao toutiao-yanzhengma" slot="left-icon"></i>
-        <!-- <MyIcon name="yanzhengma" slot="left-icon"></MyIcon> -->
+        <!-- <i class="toutiao toutiao-yanzhengma" slot="left-icon"></i> -->
+        <MyIcon name="yanzhengma" slot="left-icon"></MyIcon>
         <template #button>
           <van-count-down
             v-if="isCountDownShow"
@@ -62,13 +62,13 @@
 </template>
 
 <script>
-import { getSmsCode, login } from '@/api/users'
+import { getSmsCode, login } from '@/api/user'
 // on开头都是事件回调函数名字
 export default {
   created () { },
   data () {
     return {
-      mobile: '13911111111', // 手机号
+      mobile: '13002555360', // 手机号
       code: '246810', // 短信验证码
       // time 属性表示倒计时总时长，单位为毫秒。
       time: 5 * 1000,
@@ -83,6 +83,7 @@ export default {
         // res.data.data
         // token有效期 2个小时 两种思路 让用户重新登录 refresh_token 拿一个新的token
         this.$store.commit('setUser', res.data.data)
+        this.$router.push({ name: 'my' })
       } catch (err) {
         console.log(err)
       }
