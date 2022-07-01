@@ -48,7 +48,9 @@
 
 <script>
 import _ from 'lodash'
-import { getAllArticleList } from '@/api/home'
+import { getAllArticleList, saveChananels } from '@/api/home'
+import { setItem } from '@/utils/storage'
+const CHNNELS = 'CHNNELS'
 export default {
   name: 'ChannelPanel',
   props: {
@@ -86,6 +88,7 @@ export default {
     },
     onClick (index) {
       if (this.isCloseShow) {
+        if (index === 0) return
         // 删除
         const obj = this.channels[index]
         // eslint-disable-next-line vue/no-mutating-props
@@ -101,7 +104,30 @@ export default {
     }
   },
   computed: {},
-  watch: {},
+  watch: {
+    channels: {
+      async handler (newVal) {
+        // eslint-disable-next-line no-empty
+        if (this.$store.state.user && this.$store.state.user.token) {
+          const arr = []
+          newVal.forEach((item, index) => {
+            arr.push({ id: item.id, seq: index })
+          })
+          // 处理频道数据
+          try {
+            const res = await saveChananels(arr)
+            console.log(res)
+          } catch (err) {
+            console.log(err)
+          }
+        } else {
+          setItem(CHNNELS, newVal)
+        }
+        console.log(newVal)
+      },
+      deep: true
+    }
+  },
   filters: {},
   components: {}
 }

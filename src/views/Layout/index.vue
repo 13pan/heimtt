@@ -1,6 +1,6 @@
 <template>
   <div>
-    <keep-alive include="[Home]">
+    <keep-alive include="['Home']">
 <router-view  class="main"/>
     </keep-alive>
     <van-tabbar route>
