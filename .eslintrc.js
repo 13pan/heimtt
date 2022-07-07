@@ -15,6 +15,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-trailing-spaces': 0,
     'vue/multi-word-component-names': 0,
-    'no-template-curly-in-string': 0
+    'no-template-curly-in-string': 0,
+    camelcase: 0
   }
 }

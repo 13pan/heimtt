@@ -2,7 +2,7 @@ import request from '@/utils/request'
 // 联想数据表
 export const getSuggestList = q => {
   return request({
-    url: 'suggestion',
+    url: '/suggestion',
     params: {
       q
     }
@@ -14,7 +14,7 @@ export const getSuggestList = q => {
 // eslint-disable-next-line camelcase
 export const getSearchResult = ({ page = 1, per_page, q }) => {
   return request({
-    url: 'search',
+    url: '/search',
     params: {
       page, per_page, q
     }
